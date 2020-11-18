@@ -3,7 +3,7 @@ Google Kubernetes Engine - GKE -
 
 1- Opening & configuring an Azure account
 
-    Opening an Amazon Web Service Account
+    Opening a Google Account
         - cloud.google.com
         - Google Account (Gmail or G Suite)
         - Provide Name & Address
@@ -55,7 +55,7 @@ Google Kubernetes Engine - GKE -
         -> docker push gcr.io/demo-project-123/demo:2.0
         -> kubectl set image deployment/demo-app demo=gcr.io/demo-project-123/demo:2.0
 
-6- Browsing the AWS Web Console
+6- Browsing the GKE Web Console
 
     - Monitoring
         - Monitoring > Stackdriver
@@ -66,7 +66,7 @@ Google Kubernetes Engine - GKE -
         - Container Registry Menu
     - Billing
 
-7- Deleting your EKS Cluster
+7- Deleting your GKE Cluster
 
     - delete Service
         -> kubectl delete service demo-app
