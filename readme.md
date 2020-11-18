@@ -1,5 +1,15 @@
-[Go to AKS](aks/readme.md)
+App Demonstration
+===
+[Go to PyhtonApp](python-sample-app/readme)
 
-[Go to EKS](eks/readme.md)
+Azure : Azure Kubernetes Service - AKS
+===
+[Go to AKS](aks/readme)
 
-[Go to GKE](gke/readme.md)
+Amazon : Elastic Kubernetes Service - EKS
+===
+[Go to EKS](eks/readme)
+
+Google : Google Kubernetes Engine - GKE
+===
+[Go to GKE](gke/readme)
