@@ -12,9 +12,11 @@
 ===
 
 - Enable Kubernetes Engine Api if it's not yes done !
+    
     * From the web-based console
 
 - Install Google Cloud SDK
+    
     * Make sure Python is installed in your machine
     
         ```bash
