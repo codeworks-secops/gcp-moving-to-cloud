@@ -13,7 +13,12 @@ The goals of our sample greeting application are multiple :
 
 # Some screenshots !
 
+* Route `/hello`
+
 <img src="screenshots/hello.png" width="550">
+
+
+* Route `/hello/<name>`
 
 <img src="screenshots/hello_name.png" width="550">
 
