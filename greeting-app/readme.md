@@ -11,6 +11,11 @@ The goals of our sample greeting application are multiple :
 - Say `I'm hamza from CodeDay!` when the `/hello/hamza` route is invoked
 - Display an increment counter each time we visit one of the previous routes
 
+# Some screenshots !
+
+<img src="screenshots/hello.png" with="50">
+
+<img src="screenshots/hello_name.png" with="50">
 
 # Installation & Build Steps
 
