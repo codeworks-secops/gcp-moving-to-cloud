@@ -9,7 +9,7 @@ Google Kubernetes Engine - GKE -
 
 2- Initalize Tooling
 
-- Enable Kubernetes Engine Api
+- Enable Kubernetes Engine Api if it's not yes done !
     * From the web-based console
 
 - Install Google Cloud SDK
@@ -34,51 +34,102 @@ Google Kubernetes Engine - GKE -
 
 3- Create your GKE Cluster
 
-    - Create an image
-        <hostname>/<project-id>/<image-name>:<tag>
-            <hostname> : host for Google Container Registry that will store the image
-        Examples : 
-            -> docker build -t gcr.io/demo-project-123/demo:1.0 .
-            -> docker tag 8e2324345 gcr.io/demo-project-123/demo:1.0 .
-    - Login 
-        -> gcloud auth configure-docker
-    - Push the image
-        -> docker push gcr.io/demo-project-123/demo:1.0
-    - Create a cluster
-        -> gcloud container cluster create demo-cluster --num-nodes=3
-    - Create Deployment & Service
-        -> kubectl create deployment demp-app --image=gcr.io/demo-project-123/demo:1.0
-    - Create a LoadBalancer service
-        -> kubectl expose deployment demo-app --type=LoadBalancer --port 5000 --target-port 5000
+- Create an image
+ 
+    **HOST_NAME/PROJECT_ID/IMAGE_NAME:TAG**
+    
+    **HOST_NAME** : host for Google Container Registry that will store the image
+    
+    **PROJECT_ID** : Project Id 
+
+    **IMAGE_NAME** : Desired Docker Image Name
+    
+    **TAG** : Tag Number
+        
+    ```bash 
+        # Build new image 
+        $> docker build -t gcr.io/demo-project-123/demo:1.0 .
+        # Build new image from a tag
+        $> docker tag 8e2324345 gcr.io/demo-project-123/demo:1.0 .
+    ```
+- Login
+
+    ```bash
+        $> gcloud auth configure-docker
+    ```
+- Push the image
+    ```bash
+        $> docker push gcr.io/demo-project-123/demo:1.0
+    ```
+- Create a cluster
+    
+    ```bash
+        $> gcloud container cluster create demo-cluster --num-nodes=3
+    ```
+- Create Deployment & Service
+    
+    ```bash
+        $> kubectl create deployment demp-app --image=gcr.io/demo-project-123/demo:1.0
+    ```
+- Create a LoadBalancer service
+
+    ```bash
+        $> kubectl expose deployment demo-app --type=LoadBalancer --port 5000 --target-port 5000
+    ```
 
 4- Scaling & updating your GKE Cluster
 
-    - Scale Pods
-        -> kubectl scale deployment  demo-app --replicas=3
-    - Scale Nodes
-        -> gcloud container clusters resize demo-cluster --num-nodes 5
-    - Update the app
-        -> docker build -t gcr.io/demo-project-123/demo:2.0 .
-        -> docker push gcr.io/demo-project-123/demo:2.0
-        -> kubectl set image deployment/demo-app demo=gcr.io/demo-project-123/demo:2.0
+- Scale Pods
+
+    ```bash
+    $> kubectl scale deployment  demo-app --replicas=3
+    ```
+   
+- Scale Nodes
+    
+    ```bash
+        $> gcloud container clusters resize demo-cluster --num-nodes 5
+    ```
+
+- Update the app
+    
+    ```bash
+        $> docker build -t gcr.io/demo-project-123/demo:2.0 .
+        $> docker push gcr.io/demo-project-123/demo:2.0
+        $> kubectl set image deployment/demo-app demo=gcr.io/demo-project-123/demo:2.0
+    ```
 
 6- Browsing the GKE Web Console
 
-    - Monitoring
-        - Monitoring > Stackdriver
-            -> resources > Kuberenetes Engine
-        - Compute > Kubernetes Engine
-    - Cluster
-    - Registry
-        - Container Registry Menu
-    - Billing
+- Monitoring
+    - Monitoring -> Stackdriver
+    - Resources > Kuberenetes Engine
+    - Compute -> Kubernetes Engine
+
+- Cluster
+
+- Registry
+    - Container Registry Menu
+
+- Billing
 
 7- Deleting your GKE Cluster
 
-    - delete Service
-        -> kubectl delete service demo-app
-    - delete Cluster
-        -> gcloud container clusters delete demo-cluster
-    - delete a specific images
-        -> gcloud container images delete gcr.io/demo-project-123/demo:1.0
-        -> gcloud container images delete gcr.io/demo-project-123/demo:2.0
+- delete Service
+    
+    ```bash
+        $> kubectl delete service demo-app
+    ```
+
+- delete Cluster
+    
+    ```bash
+        $> gcloud container clusters delete demo-cluster
+    ```
+
+- delete a specific images
+
+    ```bash
+        $> gcloud container images delete gcr.io/demo-project-123/demo:1.0
+        $> gcloud container images delete gcr.io/demo-project-123/demo:2.0
+    ```
