@@ -13,9 +13,9 @@ The goals of our sample greeting application are multiple :
 
 # Some screenshots !
 
-<img src="screenshots/hello.png" with="50">
+<img src="screenshots/hello.png" width="550">
 
-<img src="screenshots/hello_name.png" with="50">
+<img src="screenshots/hello_name.png" width="550">
 
 # Installation & Build Steps
 
