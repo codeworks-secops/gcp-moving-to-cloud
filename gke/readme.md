@@ -1,13 +1,15 @@
-Google Kubernetes Engine - GKE -
-===
+# <center>Google Kubernetes Engine - GKE -</center>
 
 1- Opening & configuring a Google account
+===
+
 - cloud.google.com
 - Google Account (Gmail or G Suite)
 - Provide Name & Address
 - Credit Card Information
 
-2- Initalize Tooling
+2- Initialize Tooling
+===
 
 - Enable Kubernetes Engine Api if it's not yes done !
     * From the web-based console
@@ -33,6 +35,7 @@ Google Kubernetes Engine - GKE -
 
 
 3- Create your GKE Cluster
+===
 
 - Create an image
  
@@ -78,11 +81,12 @@ Google Kubernetes Engine - GKE -
     ```
 
 4- Scaling & updating your GKE Cluster
+===
 
 - Scale Pods
 
     ```bash
-    $> kubectl scale deployment  demo-app --replicas=3
+        $> kubectl scale deployment  demo-app --replicas=3
     ```
    
 - Scale Nodes
@@ -91,7 +95,7 @@ Google Kubernetes Engine - GKE -
         $> gcloud container clusters resize demo-cluster --num-nodes 5
     ```
 
-- Update the app
+- Updating our application
     
     ```bash
         $> docker build -t gcr.io/demo-project-123/demo:2.0 .
@@ -100,6 +104,7 @@ Google Kubernetes Engine - GKE -
     ```
 
 6- Browsing the GKE Web Console
+===
 
 - Monitoring
     - Monitoring -> Stackdriver
@@ -114,6 +119,7 @@ Google Kubernetes Engine - GKE -
 - Billing
 
 7- Deleting your GKE Cluster
+===
 
 - delete Service
     
