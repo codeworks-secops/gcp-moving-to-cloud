@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Hello from Flask</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+    <body>
+        {% if name %}
+        <h1>I'm {{ name }} from CodeDay!</h1>
+        {% else %}
+        <h1>Hello from CodeDay !</h1>
+        {% endif %}
+        <div class="counter">{{ count }}</div>
+    </body>
+
+</html>

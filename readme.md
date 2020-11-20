@@ -1,6 +1,6 @@
 App Demonstration
 ===
-[Go to PyhtonApp](python-sample-app/readme)
+[Go to GreetingApp](greeting-app/readme)
 
 Azure : Azure Kubernetes Service - AKS
 ===

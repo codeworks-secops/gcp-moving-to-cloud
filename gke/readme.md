@@ -1,28 +1,35 @@
 Google Kubernetes Engine - GKE -
 ===
 
-1- Opening & configuring an Azure account
-
-    Opening a Google Account
-        - cloud.google.com
-        - Google Account (Gmail or G Suite)
-        - Provide Name & Address
-        - Credit Card Information
+1- Opening & configuring a Google account
+- cloud.google.com
+- Google Account (Gmail or G Suite)
+- Provide Name & Address
+- Credit Card Information
 
 2- Initalize Tooling
 
-    - Enable Kubernetes Engine Api
-        -> from the web-based console
-    - Install Google Cloud SDK
-        -> make sure Python is installed in your machine
-        -> curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-319.0.0-linux-x86.tar.gz
-        -> tar zxvf google-cloud-sdk-319.0.0-linux-x86
-        -> ./google-cloud-sdk/install.sh
-        -> ./google-cloud-sdk/install.sh --help
-        -> gcloud init
-        -> gcloud projects list
-        -> export PROJECT_ID=PROJECT_ID_VALUE
-    - Configure gcloud to match account / project / region to use  
+- Enable Kubernetes Engine Api
+    * From the web-based console
+
+- Install Google Cloud SDK
+    * Make sure Python is installed in your machine
+    
+        ```bash
+        $> curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-319.0.0-linux-x86.tar.gz
+        $> tar zxvf google-cloud-sdk-319.0.0-linux-x86
+        $> ./google-cloud-sdk/install.sh
+        $> ./google-cloud-sdk/install.sh --help
+        ```
+    * Some new commands
+
+        ```bash
+        $> gcloud init
+        $> gcloud projects list
+        $> export PROJECT_ID=PROJECT_ID_VALUE
+        ```
+
+    * Configure gcloud to match account / project / region to use  
 
 
 3- Create your GKE Cluster
