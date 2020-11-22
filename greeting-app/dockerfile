@@ -7,7 +7,7 @@ WORKDIR /app
 # install the requirements dependencies
 RUN pip install -r requirements.txt
 # Copy the app.py file to the container
-COPY ./app.py /app
+COPY ./src/ /app
 # Launch app
 ENTRYPOINT [ "python" ]
 CMD [ "app.py" ]
