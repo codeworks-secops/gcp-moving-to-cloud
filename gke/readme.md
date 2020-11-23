@@ -1,5 +1,10 @@
 # <center>Google Kubernetes Engine - GKE -</center>
 
+0- Architecture
+===
+
+[Open the Architecture Diagram](https://app.diagrams.net/#G1_vhCo7SYZB3ZF2k-rKy4Un1OUcK6o3gF)
+
 1- Opening & configuring a Google account
 ===
 
