@@ -14,13 +14,17 @@
 ```bash
 # Get billing accounts list
 $> gcloud alpha billing accounts list
-# Create a new project named 'gke-demo'
-$> gcloud projects create gke-demo --organization=377598488349
-# Grap the 'gke-demo' ID from the projects list
-$> gcloud projects list
+# Get the Organisation ID
+ORGANISATION_ID=$(gcloud organizations describe codeworks.fr --format=json | jq '.name' | cut -f 2 -d '/' | sed 's/"//g')
+# Export a new environment variable named `PROJECT_NAME`
+$> export PROJECT_NAME=codeday-gke-demo
+# Create a new project
+$> gcloud projects create ${PROJECT_NAME} --organization=${ORGANISATON_ID}
+# Grap the project number
+$> PROJECT_NUMBER=$(gcloud projects list --format=json | jq -c '.[] | select(.name == env.PROJECT_NAME) | .projectNumber' | sed 's/"//g')
 # Link the project to the billing account
-$> gcloud alpha billing accounts projects link PROJECT_ID --account-id=0150EE-171E17-3E357F
-# Check the console if you want !
+$> gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=0150EE-171E17-3E357F
+# Check the console if you want !!!
 ```
 
 3- Initialize Tooling
@@ -43,14 +47,12 @@ $> gcloud alpha billing accounts projects link PROJECT_ID --account-id=0150EE-17
     * Some new commands
 
         ```bash
+        # Display zones list
+        $> gcloud compute zones list
         # Configure gcloud to match account / project / zone to use 
         $> gcloud init
-        # Display projects list
-        $> gcloud projects list
-        # Export a new environment variable named `PROJECT_ID`
-        $> export PROJECT_ID=PROJECT_ID_VALUE
         # Checl all of the configuration
-        $> gcloud config
+        $> gcloud config list
         ```
 
 4- Google Container Registry
@@ -58,11 +60,11 @@ $> gcloud alpha billing accounts projects link PROJECT_ID --account-id=0150EE-17
 
 - Create the Docker Image
  
-    The tag must follow a certain format : **HOST_NAMEPROJECT_ID/IMAGE_NAME:TAG**
+    The tag must follow a certain format : **HOST_NAME/PROJECT_NAME/IMAGE_NAME:TAG**
     
     **HOST_NAME** : host for Google Container Registry that will store the image
     
-    **PROJECT_ID** : Project Id on GCP
+    **PROJECT_NAME** : Project Id on GCP
 
     **IMAGE_NAME** : Desired Docker Image Name
     
@@ -70,15 +72,15 @@ $> gcloud alpha billing accounts projects link PROJECT_ID --account-id=0150EE-17
         
     ```bash 
     # Build new image 
-    $> docker build -t gcr.io/${PROJECT_ID}/greeting-app:1.0.0 .
-    # Build new image from a tag
-    $> docker tag 8e2324345 gcr.io/${PROJECT_ID}/greeting-app:1.0.0 .
+    $> docker build -t gcr.io/${PROJECT_NAME}/greeting-app:1.0.0 .
+    # [FROM TAG] Build new image
+    $> docker tag 8e2324345 gcr.io/${PROJECT_NAME}/greeting-app:1.0.0 .
     ```
 - Launch the Docker image
 
     ```bash
     # command to launch the docker image
-    docker run --publish 5000:5000 --detach --name greeting_app gcr.io/${PROJECT_ID}/greeting-app:1.0.0
+    docker run --publish 5000:5000 --detach --name greeting_app gcr.io/${PROJECT_NAME}/greeting-app:1.0.0
     # visit the logs
     docker logs <CONTAINER_ID> -f
     ```
@@ -93,7 +95,7 @@ $> gcloud alpha billing accounts projects link PROJECT_ID --account-id=0150EE-17
 - Push the image
     
     ```bash
-    $> docker push gcr.io/${PROJECT_ID}/greeting-app:1.0.0
+    $> docker push gcr.io/${PROJECT_NAME}/greeting-app:1.0.0
     ```
 
 5- Create and interact with your GKE Cluster
@@ -102,8 +104,6 @@ $> gcloud alpha billing accounts projects link PROJECT_ID --account-id=0150EE-17
 - Create a cluster
     
     ```bash
-    # Get the list of all regions
-    $> gcloud compute zones list
     # I'm going to start with 2 nodes
     $> gcloud container clusters create codeday-cluster --num-nodes=2
     ```
@@ -119,7 +119,7 @@ $> gcloud alpha billing accounts projects link PROJECT_ID --account-id=0150EE-17
 - Create Deployment & Service
     
     ```bash
-    $> kubectl create deployment greeting-app --image=gcr.io/${PROJECT_ID}/greeting-app:1.0.0
+    $> kubectl create deployment greeting-app --image=gcr.io/${PROJECT_NAME}/greeting-app:1.0.0
     ```
 
 - Create a LoadBalancer service
@@ -146,9 +146,9 @@ $> gcloud alpha billing accounts projects link PROJECT_ID --account-id=0150EE-17
 - Updating our application
     
     ```bash
-    $> docker build -t gcr.io/${PROJECT_ID}/greeting-app:2.0.0 .
-    $> docker push gcr.io/${PROJECT_ID}/greeting-app:2.0.0
-    $> kubectl set image deployment/greeting-app greeting-app=gcr.io/${PROJECT_ID}/greeting-app:2.0.0
+    $> docker build -t gcr.io/${PROJECT_NAME}/greeting-app:2.0.0 .
+    $> docker push gcr.io/${PROJECT_NAME}/greeting-app:2.0.0
+    $> kubectl set image deployment/greeting-app greeting-app=gcr.io/${PROJECT_NAME}/greeting-app:2.0.0
     ```
 
 7- Browsing the GKE Web Console
@@ -184,8 +184,8 @@ $> gcloud alpha billing accounts projects link PROJECT_ID --account-id=0150EE-17
 - delete a specific images
 
     ```bash
-    $> gcloud container images delete gcr.io/${PROJECT_ID}/greeting-app:1.0.0
-    $> gcloud container images delete gcr.io/${PROJECT_ID}/greeting-app:2.0.0
+    $> gcloud container images delete gcr.io/${PROJECT_NAME}/greeting-app:1.0.0
+    $> gcloud container images delete gcr.io/${PROJECT_NAME}/greeting-app:2.0.0
     ```
 
 9- Some useful gcloud commands
