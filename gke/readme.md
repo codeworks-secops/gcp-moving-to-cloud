@@ -52,10 +52,10 @@ $> gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=01
     * Some new commands
 
         ```bash
+        # Configure gcloud to match account / project / zone to use from scratch
+        $> gcloud init
         # Display zones list
         $> gcloud compute zones list
-        # Configure gcloud to match account / project / zone to use 
-        $> gcloud init
         # Checl all of the configuration
         $> gcloud config list
         ```
