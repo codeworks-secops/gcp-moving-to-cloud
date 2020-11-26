@@ -88,15 +88,17 @@
 
 - Create the Docker Image
  
-    The tag must follow a certain format : **HOST_NAME/PROJECT_NAME/IMAGE_NAME:TAG**
-    
-    **HOST_NAME** : host for Google Container Registry that will store the image
-    
-    **PROJECT_NAME** : Project Id on GCP
+    - Naming convention
 
-    **IMAGE_NAME** : Desired Docker Image Name
-    
-    **TAG** : Tag Number
+        The tag must follow a certain format : **HOST_NAME/PROJECT_NAME/IMAGE_NAME:TAG**
+        
+        **HOST_NAME** : host for Google Container Registry that will store the image
+        
+        **PROJECT_NAME** : Project Id on GCP
+
+        **IMAGE_NAME** : Desired Docker Image Name
+        
+        **TAG** : Tag Number
         
     - Build a new image
     
