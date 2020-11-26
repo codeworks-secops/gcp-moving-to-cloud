@@ -165,6 +165,8 @@
     kubectl expose deployment greeting-app --type=LoadBalancer --port 5000 --target-port 5000
     ```
 
+- Access your application using the external IP address of the LB service
+
 7- Scaling & updating your GKE Cluster
 ===
 
