@@ -1,11 +1,11 @@
 # <center>Google Kubernetes Engine - GKE -</center>
 
-0- Architecture
+1- Architecture
 ===
 
 [Open the Architecture Diagram](https://app.diagrams.net/#G1_vhCo7SYZB3ZF2k-rKy4Un1OUcK6o3gF)
 
-1- Opening & configuring a Google account
+2- Opening & configuring a Google account
 ===
 
 - cloud.google.com
@@ -13,7 +13,7 @@
 - Provide Name & Address
 - Credit Card Information
 
-2- Create new GCP Project
+3- Create new GCP Project
 ===
 
 ```bash
@@ -32,7 +32,7 @@ $> gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=01
 # Check the console if you want !!!
 ```
 
-3- Initialize Tooling
+4- Initialize Tooling
 ===
 
 - Enable Kubernetes Engine API (if it's not yes done)
@@ -60,7 +60,7 @@ $> gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=01
         $> gcloud config list
         ```
 
-4- Google Container Registry
+5- Google Container Registry
 ===
 
 - Create the Docker Image
@@ -103,7 +103,7 @@ $> gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=01
     $> docker push gcr.io/${PROJECT_NAME}/greeting-app:1.0.0
     ```
 
-5- Create and interact with your GKE Cluster
+6- Create and interact with your GKE Cluster
 ===
 
 - Create a cluster
@@ -133,7 +133,7 @@ $> gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=01
     $> kubectl expose deployment greeting-app --type=LoadBalancer --port 5000 --target-port 5000
     ```
 
-6- Scaling & updating your GKE Cluster
+7- Scaling & updating your GKE Cluster
 ===
 
 - Scale Pods
@@ -156,7 +156,7 @@ $> gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=01
     $> kubectl set image deployment/greeting-app greeting-app=gcr.io/${PROJECT_NAME}/greeting-app:2.0.0
     ```
 
-7- Browsing the GKE Web Console
+8- Browsing the GKE Web Console
 ===
 
 - Monitoring
@@ -171,7 +171,7 @@ $> gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=01
 - Billing
     - Reports
 
-8- Deleting your GKE Cluster
+9- Deleting your GKE Cluster
 ===
 
 - delete Service
@@ -193,7 +193,7 @@ $> gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=01
     $> gcloud container images delete gcr.io/${PROJECT_NAME}/greeting-app:2.0.0
     ```
 
-9- Some useful gcloud commands
+10- Some useful gcloud commands
 ===
 
 ```bash
